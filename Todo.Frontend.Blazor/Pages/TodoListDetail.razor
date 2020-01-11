@@ -1,0 +1,33 @@
+@page "/todolist/{ListId:long}"
+
+@using Todo.Frontend.Blazor.Models
+@using Todo.Frontend.Blazor.Services
+@inject ITodoListService TodoListService
+
+<h1>@List.Name</h1>
+
+@if (List.Items == null || List.Items.Count == 0)
+{
+    <h3>There are currently no items</h3>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var item in List.Items)
+        {
+            <li class="list-group-item">
+                <span>@item.Name</span>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter] public long ListId { get; set; }
+    TodoList List;
+
+    protected override async Task OnInitializedAsync()
+    {
+        List = await TodoListService.GetAsync(ListId);
+    }
+}
