@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApi2", "MyApi2\MyApi2.csproj", "{CCDC0078-37E3-4575-9299-9BDEECEEF141}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Frontend.Blazor", "Todo.Frontend.Blazor\Todo.Frontend.Blazor.csproj", "{30AD0E4F-9922-4235-A233-F8D034EABB75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CCDC0078-37E3-4575-9299-9BDEECEEF141}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCDC0078-37E3-4575-9299-9BDEECEEF141}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCDC0078-37E3-4575-9299-9BDEECEEF141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30AD0E4F-9922-4235-A233-F8D034EABB75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30AD0E4F-9922-4235-A233-F8D034EABB75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30AD0E4F-9922-4235-A233-F8D034EABB75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30AD0E4F-9922-4235-A233-F8D034EABB75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
