@@ -1,7 +1,9 @@
 @page "/todolist/{ListId:long}"
 
+@using System.Linq
 @using Todo.Frontend.Blazor.Models
 @using Todo.Frontend.Blazor.Services
+@inject HttpClient Http
 @inject ITodoListService TodoListService
 
 <h1>@List.Name</h1>
@@ -16,18 +18,42 @@ else
         @foreach (var item in List.Items)
         {
             <li class="list-group-item">
+                <input type="checkbox" @bind="item.IsComplete" />
                 <span>@item.Name</span>
             </li>
         }
     </ul>
 }
 
+<input @bind="_newItemName" />
+<button @onclick="@AddItem">Add</button>
+
 @code {
     [Parameter] public long ListId { get; set; }
     TodoList List;
+    string _apiBaseUrl = "https://localhost:44336/todoitems";
+    private string _newItemName;
+    private long _maxItemId = 0;
 
     protected override async Task OnInitializedAsync()
     {
+        await PopulateTodoList();
+    }
+
+    private async Task PopulateTodoList()
+    {
         List = await TodoListService.GetAsync(ListId);
+        List.Items = await Http.GetJsonAsync<List<TodoItem>>(_apiBaseUrl);
+
+        if (List.Items != null && List.Items.Count > 0)
+            _maxItemId = List.Items.Max(x => x.Id);
+    }
+
+    private async Task AddItem()
+    {
+        _maxItemId++;
+        var addItem = new TodoItem { Id = _maxItemId, Name = _newItemName, IsComplete = false };
+        await Http.PostJsonAsync(_apiBaseUrl, addItem);
+        await PopulateTodoList();
     }
 }

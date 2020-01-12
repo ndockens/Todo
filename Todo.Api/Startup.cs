@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Todo.Api.Models;
 using Todo.Api.Services;
 using Todo.Api.Repositories;
+using Microsoft.Net.Http.Headers;
 
 namespace Todo.Api
 {
@@ -44,6 +45,11 @@ namespace Todo.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(policy =>
+                policy.WithOrigins("http://localhost:7421", "http://localhost:7419")
+                .AllowAnyHeader()
+                .AllowAnyMethod());
 
             app.UseHttpsRedirection();
 
