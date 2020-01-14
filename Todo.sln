@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Api", "Todo.Api\Todo.Api.csproj", "{CCDC0078-37E3-4575-9299-9BDEECEEF141}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Api", "src\Todo.Api\Todo.Api.csproj", "{CCDC0078-37E3-4575-9299-9BDEECEEF141}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Frontend.Blazor", "Todo.Frontend.Blazor\Todo.Frontend.Blazor.csproj", "{30AD0E4F-9922-4235-A233-F8D034EABB75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Todo.Frontend.Blazor", "src\Todo.Frontend.Blazor\Todo.Frontend.Blazor.csproj", "{30AD0E4F-9922-4235-A233-F8D034EABB75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
