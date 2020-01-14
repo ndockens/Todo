@@ -8,10 +8,10 @@ namespace Todo.Api.Repositories
 {
     public interface ITodoListRepository
     {
-        Task<IEnumerable<TodoList>> GetTodoListsAsync();
-        Task<TodoList> GetTodoListAsync(long id);
-        Task UpdateTodoListAsync(long id, TodoList todoList);
-        Task CreateTodoListAsync(TodoList todoList);
-        Task DeleteTodoListAsync(long id);
+        Task<IEnumerable<TodoList>> GetAsync();
+        Task<TodoList> GetAsync(long id);
+        Task UpdateAsync(TodoList todoList);
+        Task AddAsync(TodoList todoList);
+        Task RemoveAsync(long id);
     }
 }

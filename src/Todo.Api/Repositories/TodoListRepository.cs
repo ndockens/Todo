@@ -16,23 +16,23 @@ namespace Todo.Api.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<TodoList>> GetTodoListsAsync()
+        public async Task<IEnumerable<TodoList>> GetAsync()
         {
             return await _context.TodoLists.ToListAsync();
         }
 
-        public async Task<TodoList> GetTodoListAsync(long id)
+        public async Task<TodoList> GetAsync(long id)
         {
             return await _context.TodoLists.FindAsync(id);
         }
 
-        public async Task CreateTodoListAsync(TodoList todoList)
+        public async Task AddAsync(TodoList todoList)
         {
             _context.TodoLists.Add(todoList);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateTodoListAsync(long id, TodoList todoList)
+        public async Task UpdateAsync(TodoList todoList)
         {
             _context.Entry(todoList).State = EntityState.Modified;
 
@@ -42,9 +42,9 @@ namespace Todo.Api.Repositories
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_context.TodoLists.Any(e => e.Id == id))
+                if (!_context.TodoLists.Any(e => e.Id == todoList.Id))
                 {
-                    throw new Exception($"Todo list {id} not found.");
+                    throw new Exception($"Todo list {todoList.Id} not found.");
                 }
                 else
                 {
@@ -53,7 +53,7 @@ namespace Todo.Api.Repositories
             }
         }
 
-        public async Task DeleteTodoListAsync(long id)
+        public async Task RemoveAsync(long id)
         {
             var todoList = await _context.TodoLists.FindAsync(id);
 
@@ -62,7 +62,7 @@ namespace Todo.Api.Repositories
                 throw new Exception($"Todo list {id} not found.");
             }
 
-            _context.TodoItems.Remove(todoList);
+            _context.TodoLists.Remove(todoList);
             await _context.SaveChangesAsync();
         }
     }
